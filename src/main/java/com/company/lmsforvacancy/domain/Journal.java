@@ -1,11 +1,9 @@
 package com.company.lmsforvacancy.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -13,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Journal {
 
     @Id
@@ -20,12 +19,9 @@ public class Journal {
     private Integer id;
     private String name;
     @OneToOne
-    @JoinColumn(name = "group_id")
     private Group group;
-
     @ManyToMany
-    private List<Subject> subjects;
-
+    private List<Subject> subjects = new ArrayList<>();
     private boolean deleted;
 }
 

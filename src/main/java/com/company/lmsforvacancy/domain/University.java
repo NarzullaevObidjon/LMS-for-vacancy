@@ -17,6 +17,5 @@ public class University {
     private String name;
     private String address;
     private short openYear;
-
     private boolean deleted;
 }

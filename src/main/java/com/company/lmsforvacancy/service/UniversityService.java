@@ -25,7 +25,7 @@ public class UniversityService {
     @Cacheable(key = "#id")
     public University get(@NonNull Integer id) {
         return universityRepository.findById(id)
-                .orElseThrow(()->new ItemNotFoundException("University not found with id : "+id));
+                .orElseThrow(() -> new ItemNotFoundException("University not found with id : " + id));
     }
 
     public University create(UniversityCreateDTO dto) {
@@ -39,19 +39,17 @@ public class UniversityService {
 
     @CacheEvict(key = "#id")
     public boolean delete(@NonNull Integer id) {
-        universityRepository.findById(id)
-                .orElseThrow(() -> new ItemNotFoundException("University not found with id : " + id));
+        get(id);
         universityRepository.delete(id);
         return true;
     }
 
     @CachePut(key = "#result.id")
     public University update(UniversityUpdateDTO dto) {
-        University university = universityRepository.findById(dto.getId())
-                .orElseThrow(() -> new ItemNotFoundException("University not found with id : " + dto.getId()));
-            university.setAddress(dto.getAddress());
-            university.setName(dto.getName());
-            university.setOpenYear(dto.getOpenYear());
+        University university = get(dto.getId());
+        university.setAddress(dto.getAddress());
+        university.setName(dto.getName());
+        university.setOpenYear(dto.getOpenYear());
         universityRepository.save(university);
         return university;
     }

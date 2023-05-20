@@ -47,4 +47,5 @@ public class FacultyController {
     private ResponseEntity<Faculty> update(@RequestParam("id") Integer id,@RequestParam("name") String name) {
         return ResponseEntity.ok(facultyService.update(id, name));
     }
+
 }

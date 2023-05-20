@@ -15,8 +15,6 @@ public class Student {
     private Integer id;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "group_id")
     private Group group;
-
     private boolean deleted;
 }

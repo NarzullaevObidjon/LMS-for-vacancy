@@ -43,4 +43,12 @@ public class GroupController {
     private ResponseEntity<Group> update(@Valid @RequestBody GroupUpdateDTO dto) {
         return ResponseEntity.ok(groupService.update(dto));
     }
+
+    @PostMapping("/add-subject")
+    private ResponseEntity<Group> addSubject(
+            @RequestParam("subject_id") Integer subjectId,
+            @RequestParam("group_id") Integer groupId
+    ){
+        return ResponseEntity.ok(groupService.addSubject(subjectId, groupId));
+    }
 }

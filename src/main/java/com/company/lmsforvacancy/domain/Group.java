@@ -3,6 +3,9 @@ package com.company.lmsforvacancy.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -16,11 +19,11 @@ public class Group {
     private Integer id;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "faculty_id")
     private Faculty faculty;
     private short year;
-
+    @ManyToMany
+    @Builder.Default
+    private List<Subject> subjects = new ArrayList<>();
     private boolean deleted;
-
 }
 

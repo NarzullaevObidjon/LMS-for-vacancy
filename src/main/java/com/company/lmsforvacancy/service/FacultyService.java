@@ -5,7 +5,6 @@ import com.company.lmsforvacancy.domain.University;
 import com.company.lmsforvacancy.dto.faculty.FacultyCreateDTO;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
 import com.company.lmsforvacancy.repository.FacultyRepository;
-import com.company.lmsforvacancy.repository.UniversityRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
@@ -16,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 @RequiredArgsConstructor
@@ -42,16 +40,14 @@ public class FacultyService {
 
     @CacheEvict(key = "#id")
     public boolean delete(@NonNull Integer id) {
-        facultyRepository.findById(id)
-                .orElseThrow(() -> new ItemNotFoundException("Faculty not found with id : " + id));
+        get(id);
         facultyRepository.delete(id);
         return true;
     }
 
     @CachePut(key = "#result.id")
     public Faculty update(Integer id,String name) {
-        Faculty faculty = facultyRepository.findById(id)
-                .orElseThrow(() -> new ItemNotFoundException("Faculty not found with id : " + id));
+        Faculty faculty = get(id);
         faculty.setName(name);
         facultyRepository.save(faculty);
         return faculty;

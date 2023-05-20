@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 @CacheConfig(cacheNames = "student")
 public class StudentService {
     private final StudentRepository studentRepository;
-    private final GroupRepository groupRepository;
+    private final GroupService groupService;
 
     @Cacheable(key = "#id")
     public Student getStudent(@NonNull Integer id) {
@@ -32,8 +32,7 @@ public class StudentService {
     }
 
     public Student create(StudentCreateDTO dto) {
-        Group group = groupRepository.findById(dto.getGroupId())
-                .orElseThrow(() -> new ItemNotFoundException("Group not found with id : " + dto.getGroupId()));
+        Group group = groupService.get(dto.getGroupId());
 
         return studentRepository.save(
                 Student.builder()
@@ -44,18 +43,15 @@ public class StudentService {
 
     @CacheEvict(key = "#id")
     public Boolean delete(@NonNull Integer id) {
-         studentRepository.delete(id);
-         return true;
+        getStudent(id);
+        studentRepository.delete(id);
+        return true;
     }
 
     @CachePut(key = "#result.id")
     public Student update(StudentUpdateDTO dto) {
-        Student student = studentRepository.findById(dto.getId())
-                .orElseThrow(() -> new ItemNotFoundException("Student not found with id : " + dto.getId()));
-
-        Group group = groupRepository.findById(dto.getId())
-                .orElseThrow(() -> new ItemNotFoundException("Group not found with id : " + dto.getId()));
-
+        Student student = getStudent(dto.getId());
+        Group group = groupService.get(dto.getGroupId());
         student.setName(dto.getName());
         student.setGroup(group);
         studentRepository.save(student);

@@ -16,9 +16,7 @@ public class Faculty {
     private Integer id;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "university_id")
     private University university;
-
     private boolean deleted;
 }
 
