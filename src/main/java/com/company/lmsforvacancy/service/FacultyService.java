@@ -57,7 +57,7 @@ public class FacultyService {
         return faculty;
     }
 
-    @Cacheable
+
     public Page<Faculty> getAll(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
         return facultyRepository.findAll(pageable);

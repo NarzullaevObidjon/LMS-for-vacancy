@@ -58,7 +58,6 @@ public class GroupService {
         return group;
     }
 
-    @Cacheable
     public Page<Group> getAll(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
         return groupRepository.findAll(pageable);
