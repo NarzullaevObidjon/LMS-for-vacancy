@@ -12,4 +12,4 @@ jwt:
     key: '5267556B58703273357638782F413F4428472B4B6250655368566D5971337436'
   expiry:
     in:
-      minutes: 10
+      minutes: 4320 #3 days (change it)

@@ -40,16 +40,19 @@ public class StudentController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     private ResponseEntity<Boolean> delete(@PathVariable Integer id){
         return ResponseEntity.ok(studentService.delete(id));
     }
 
     @PostMapping("/update")
+    @PreAuthorize("isAuthenticated()")
     private ResponseEntity<Student> update(@RequestBody @Valid StudentUpdateDTO dto){
         return ResponseEntity.ok(studentService.update(dto));
     }
 
     @GetMapping()
+    @PreAuthorize("hasRole('ADMIN')")
     private ResponseEntity<Page<Student>> getAll(
             @RequestParam(defaultValue = "0", required = false) Integer page,
             @RequestParam(defaultValue = "10", required = false) Integer size
@@ -60,11 +63,13 @@ public class StudentController {
     // additional
 
     @GetMapping("/subjects/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Subject>> getSubjects(@PathVariable Integer id){
         return ResponseEntity.ok(journalService.getSubjects(id));
     }
 
     @GetMapping("/search/{name}")
+    @PreAuthorize("hasRole('ADMIN')")
     private ResponseEntity<List<Student>> searchWithName(@PathVariable String name){
         return ResponseEntity.ok(studentService.getStudentsWithName(name));
     }
