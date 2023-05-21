@@ -1,6 +1,7 @@
 package com.company.lmsforvacancy.repository;
 
 import com.company.lmsforvacancy.domain.Journal;
+import com.company.lmsforvacancy.domain.Subject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface JournalRepository extends JpaRepository<Journal, Integer> {
@@ -21,4 +23,7 @@ public interface JournalRepository extends JpaRepository<Journal, Integer> {
 
     @Query("from Journal u where not u.deleted")
     Page<Journal> findAll(Pageable pageable);
+
+    @Query("select g.subjects from Journal g where g.id=?1")
+    List<Subject> getSubjectsByGroupId(Integer id);
 }

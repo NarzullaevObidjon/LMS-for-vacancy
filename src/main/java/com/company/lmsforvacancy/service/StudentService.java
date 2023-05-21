@@ -19,6 +19,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @CacheConfig(cacheNames = "student")
@@ -62,5 +64,9 @@ public class StudentService {
     public Page<Student> getAll(int size, int page) {
         Pageable pageable = PageRequest.of(page, size);
         return studentRepository.findAll(pageable);
+    }
+
+    public List<Student> getStudentsWithName(String name) {
+        return studentRepository.findAllByNameEqualsAndDeleted(name, false);
     }
 }

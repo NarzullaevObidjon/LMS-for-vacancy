@@ -8,6 +8,7 @@ import com.company.lmsforvacancy.dto.group.GroupCreateDTO;
 import com.company.lmsforvacancy.dto.group.GroupUpdateDTO;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
 import com.company.lmsforvacancy.repository.GroupRepository;
+import com.company.lmsforvacancy.repository.JournalRepository;
 import com.company.lmsforvacancy.repository.StudentRepository;
 import com.company.lmsforvacancy.repository.SubjectRepository;
 import lombok.NonNull;
@@ -31,8 +32,8 @@ import java.util.List;
 public class GroupService {
     private final GroupRepository groupRepository;
     private final FacultyService facultyService;
-    private final SubjectService subjectService;
     private final StudentRepository studentRepository;
+    private final JournalRepository journalRepository;
 
     @Cacheable(key = "#id")
     public Group get(@NonNull Integer id) {
@@ -71,19 +72,18 @@ public class GroupService {
         return groupRepository.findAll(pageable);
     }
 
-    @CachePut(key = "#groupId")
-    public Group addSubject(Integer subjectId, Integer groupId) {
-        Group group = get(groupId);
-        Subject subject = subjectService.get(subjectId);
-        group.getSubjects().add(subject);
-        groupRepository.save(group);
-        return group;
-    }
+//    @CachePut(key = "#groupId")
+//    public Group addSubject(Integer subjectId, Integer groupId) {
+//        Group group = get(groupId);
+//        Subject subject = subjectService.get(subjectId);
+//        group.getSubjects().add(subject);
+//        groupRepository.save(group);
+//        return group;
+//    }
 
     public List<Subject> getSubjects(Integer id) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ItemNotFoundException("Student not found with id : " + id));
-
-        return groupRepository.getSubjectsByGroupId(student.getGroup().getId());
+        return journalRepository.getSubjectsByGroupId(student.getGroup().getId());
     }
 }

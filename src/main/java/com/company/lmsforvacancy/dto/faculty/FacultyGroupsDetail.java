@@ -1,5 +1,6 @@
 package com.company.lmsforvacancy.dto.faculty;
 
+import com.company.lmsforvacancy.dto.group.GroupsStudents;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

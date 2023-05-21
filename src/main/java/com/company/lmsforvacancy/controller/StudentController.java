@@ -6,6 +6,7 @@ import com.company.lmsforvacancy.domain.Subject;
 import com.company.lmsforvacancy.dto.student.StudentCreateDTO;
 import com.company.lmsforvacancy.dto.student.StudentUpdateDTO;
 import com.company.lmsforvacancy.service.GroupService;
+import com.company.lmsforvacancy.service.JournalService;
 import com.company.lmsforvacancy.service.StudentService;
 import com.company.lmsforvacancy.service.SubjectService;
 import jakarta.validation.Valid;
@@ -21,7 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService studentService;
-    private final GroupService groupService;
+    private final JournalService journalService;
 
     //crud
 
@@ -57,8 +58,11 @@ public class StudentController {
 
     @GetMapping("/subjects/{id}")
     public ResponseEntity<List<Subject>> getSubjects(@PathVariable Integer id){
-        return ResponseEntity.ok(groupService.getSubjects(id));
+        return ResponseEntity.ok(journalService.getSubjects(id));
     }
 
-
+    @GetMapping("/search/{name}")
+    private ResponseEntity<List<Student>> searchWithName(@PathVariable String name){
+        return ResponseEntity.ok(studentService.getStudentsWithName(name));
+    }
 }

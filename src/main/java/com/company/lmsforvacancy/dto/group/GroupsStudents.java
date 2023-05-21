@@ -1,4 +1,4 @@
-package com.company.lmsforvacancy.dto.faculty;
+package com.company.lmsforvacancy.dto.group;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

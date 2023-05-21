@@ -18,4 +18,6 @@ public class MarkCreateDTO {
     private Integer studentId;
     @JsonProperty("journal_id")
     private Integer journalId;
+    @JsonProperty("subject_id")
+    private Integer subjectId;
 }

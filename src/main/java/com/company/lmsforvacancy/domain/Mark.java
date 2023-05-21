@@ -10,7 +10,6 @@ import lombok.*;
 @Entity
 @Builder
 public class Mark {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,6 +17,7 @@ public class Mark {
     private Student student;
     @ManyToOne
     private Journal journal;
+    @ManyToOne Subject subject;
     private byte mark;
     private boolean deleted;
 }

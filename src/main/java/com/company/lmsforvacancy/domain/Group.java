@@ -21,9 +21,6 @@ public class Group {
     @ManyToOne
     private Faculty faculty;
     private short year;
-    @ManyToMany
-    @Builder.Default
-    private List<Subject> subjects = new ArrayList<>();
     private boolean deleted;
 }
 

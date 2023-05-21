@@ -4,7 +4,7 @@ import com.company.lmsforvacancy.domain.Faculty;
 import com.company.lmsforvacancy.domain.University;
 import com.company.lmsforvacancy.dto.faculty.FacultyCreateDTO;
 import com.company.lmsforvacancy.dto.faculty.FacultyGroupsDetail;
-import com.company.lmsforvacancy.dto.faculty.GroupsStudents;
+import com.company.lmsforvacancy.dto.group.GroupsStudents;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
 import com.company.lmsforvacancy.repository.FacultyRepository;
 import com.company.lmsforvacancy.repository.GroupRepository;

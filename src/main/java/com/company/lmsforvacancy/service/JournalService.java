@@ -2,11 +2,13 @@ package com.company.lmsforvacancy.service;
 
 import com.company.lmsforvacancy.domain.Group;
 import com.company.lmsforvacancy.domain.Journal;
+import com.company.lmsforvacancy.domain.Student;
 import com.company.lmsforvacancy.domain.Subject;
 import com.company.lmsforvacancy.dto.journal.JournalCreateDTO;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
 import com.company.lmsforvacancy.repository.GroupRepository;
 import com.company.lmsforvacancy.repository.JournalRepository;
+import com.company.lmsforvacancy.repository.StudentRepository;
 import com.company.lmsforvacancy.repository.SubjectRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @CacheConfig(cacheNames = "journal")
@@ -26,6 +30,7 @@ public class JournalService {
     private final JournalRepository journalRepository;
     private final GroupService groupService;
     private final SubjectService subjectService;
+    private final StudentRepository studentRepository;
 
     @Cacheable(key = "#id")
     public Journal get(@NonNull Integer id) {
@@ -70,5 +75,13 @@ public class JournalService {
         journal.getSubjects().add(subject);
         journalRepository.save(journal);
         return journal;
+    }
+
+    public List<Subject> getSubjects(Integer id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new ItemNotFoundException("Student not found with id : " + id));
+
+        return journalRepository.getSubjectsByGroupId(student.getGroup().getId());
+
     }
 }

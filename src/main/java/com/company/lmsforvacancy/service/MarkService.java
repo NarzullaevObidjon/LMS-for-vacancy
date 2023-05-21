@@ -25,6 +25,7 @@ public class MarkService {
     private final MarkRepository markRepository;
     private final JournalService journalService;
     private final StudentService studentService;
+    private final SubjectService subjectService;
 
     @Cacheable(key = "#id")
     public Mark get(@NonNull Integer id) {
@@ -35,10 +36,12 @@ public class MarkService {
     public Mark create(MarkCreateDTO dto) {
         Journal journal = journalService.get(dto.getJournalId());
         Student student = studentService.getStudent(dto.getStudentId());
+        Subject subject = subjectService.get(dto.getSubjectId());
         return markRepository.save(
                 Mark.builder()
                         .mark(dto.getMark())
                         .journal(journal)
+                        .subject(subject)
                         .student(student)
                         .build());
     }
