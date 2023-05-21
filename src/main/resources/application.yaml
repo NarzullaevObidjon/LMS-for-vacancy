@@ -7,3 +7,9 @@ spring:
   jpa:
     show-sql: true
     hibernate.ddl-auto: update
+jwt:
+  secret:
+    key: '5267556B58703273357638782F413F4428472B4B6250655368566D5971337436'
+  expiry:
+    in:
+      minutes: 10

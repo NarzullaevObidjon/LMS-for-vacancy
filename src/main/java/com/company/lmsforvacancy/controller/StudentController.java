@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,11 +28,13 @@ public class StudentController {
     //crud
 
     @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
     private ResponseEntity<Student> get(@PathVariable Integer id){
         return ResponseEntity.ok(studentService.getStudent(id));
     }
 
     @PostMapping("/create")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     private ResponseEntity<Student> create(@RequestBody @Valid StudentCreateDTO dto){
         return ResponseEntity.ok(studentService.create(dto));
     }

@@ -1,5 +1,6 @@
 package com.company.lmsforvacancy.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,8 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @JsonIgnore
+    private Integer authUserId;
     private String name;
     @ManyToOne
     private Group group;
