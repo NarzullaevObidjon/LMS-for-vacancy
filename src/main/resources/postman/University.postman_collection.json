@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "b0d7ec25-24a3-4fc3-82b9-130248db4523",
+		"name": "University",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26686540"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"open_year\": 1918,\r\n    \"address\":\"Tashkent\",\r\n    \"name\" :\"NUU\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/university/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"university",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"\",\r\n    \"open_year\": -1,\r\n    \"address\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/university/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"university",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/university/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"university",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"name\" : \"NUU\",\r\n    \"open_year\": \"1945\",\r\n    \"address\":\"Tashkent\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/university/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"university",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all without size and page",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/university",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"university"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all with size and page",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "size",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/university",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"university"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/university/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"university",
+						"delete",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

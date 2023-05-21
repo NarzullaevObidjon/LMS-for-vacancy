@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "ba2471d9-2d47-4558-872e-215de9d23c38",
+		"name": "Additional Tasks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26686540"
+	},
+	"item": [
+		{
+			"name": "get subjects of student",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/student/subjects/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student",
+						"subjects",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get faculty's groups detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/faculty/get-groups-detail/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"faculty",
+						"get-groups-detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search with name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/student/search/Behruz",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student",
+						"search",
+						"Behruz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get students mark",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/group/get-marks-in-group?group_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"get-marks-in-group"
+					],
+					"query": [
+						{
+							"key": "group_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

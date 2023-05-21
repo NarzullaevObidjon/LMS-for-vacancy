@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "cb1bcacb-5f2c-49f1-8168-8d62daf438fd",
+		"name": "Journal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26686540"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Journal-1\",\r\n    \"group_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Journal-1\",\r\n    \"group_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal/update?id=1&name=J-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal",
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "name",
+							"value": "J-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Journal-1\",\r\n    \"group_id\":-2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all with page and size",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal?page=0&size=15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all without page and size Copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal/delete/1?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal",
+						"delete",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add subject",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/journal/add-subject?subject_id=1&journal_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"journal",
+						"add-subject"
+					],
+					"query": [
+						{
+							"key": "subject_id",
+							"value": "1"
+						},
+						{
+							"key": "journal_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

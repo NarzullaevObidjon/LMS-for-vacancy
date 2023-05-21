@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "633a6c7c-b35e-463d-856a-17bda005f078",
+		"name": "Subject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26686540"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/subject/create?name=English",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"subject",
+						"create"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "English"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/subject/update?name=Mathematics&id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"subject",
+						"update"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Mathematics"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/subject/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"subject",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/subject/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"subject",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all without page and size",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/subject",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"subject"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all with page and size",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJPYmlkIiwiaWF0IjoxNjg0Njg5NTQ4LCJleHAiOjE2ODQ5NDg3NDh9.Om4DPi6dJWbQKMwAebc1pZiPYZRDlVkrIF3QcRc4UXw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/subject?page=0&size=15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"subject"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "15"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
