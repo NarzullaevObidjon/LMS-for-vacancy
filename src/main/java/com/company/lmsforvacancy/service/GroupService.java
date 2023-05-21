@@ -2,11 +2,13 @@ package com.company.lmsforvacancy.service;
 
 import com.company.lmsforvacancy.domain.Faculty;
 import com.company.lmsforvacancy.domain.Group;
+import com.company.lmsforvacancy.domain.Student;
 import com.company.lmsforvacancy.domain.Subject;
 import com.company.lmsforvacancy.dto.group.GroupCreateDTO;
 import com.company.lmsforvacancy.dto.group.GroupUpdateDTO;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
 import com.company.lmsforvacancy.repository.GroupRepository;
+import com.company.lmsforvacancy.repository.StudentRepository;
 import com.company.lmsforvacancy.repository.SubjectRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -14,11 +16,14 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +32,7 @@ public class GroupService {
     private final GroupRepository groupRepository;
     private final FacultyService facultyService;
     private final SubjectService subjectService;
+    private final StudentRepository studentRepository;
 
     @Cacheable(key = "#id")
     public Group get(@NonNull Integer id) {
@@ -72,5 +78,12 @@ public class GroupService {
         group.getSubjects().add(subject);
         groupRepository.save(group);
         return group;
+    }
+
+    public List<Subject> getSubjects(Integer id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new ItemNotFoundException("Student not found with id : " + id));
+
+        return groupRepository.getSubjectsByGroupId(student.getGroup().getId());
     }
 }

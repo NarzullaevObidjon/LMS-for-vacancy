@@ -3,6 +3,7 @@ package com.company.lmsforvacancy.controller;
 import com.company.lmsforvacancy.domain.Faculty;
 import com.company.lmsforvacancy.domain.University;
 import com.company.lmsforvacancy.dto.faculty.FacultyCreateDTO;
+import com.company.lmsforvacancy.dto.faculty.FacultyGroupsDetail;
 import com.company.lmsforvacancy.dto.university.UniversityCreateDTO;
 import com.company.lmsforvacancy.dto.university.UniversityUpdateDTO;
 import com.company.lmsforvacancy.service.FacultyService;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class FacultyController {
     private final FacultyService facultyService;
+
+    //crud
 
     @GetMapping("/{id}")
     private ResponseEntity<Faculty> get(@PathVariable Integer id) {
@@ -46,6 +49,13 @@ public class FacultyController {
     @PostMapping("/update")
     private ResponseEntity<Faculty> update(@RequestParam("id") Integer id,@RequestParam("name") String name) {
         return ResponseEntity.ok(facultyService.update(id, name));
+    }
+
+    //additional
+
+    @GetMapping("/get-groups-detail/{id}")
+    private ResponseEntity<FacultyGroupsDetail> getGroupsDetail(@PathVariable Integer id){
+        return ResponseEntity.ok(facultyService.getGroupsDetail(id));
     }
 
 }

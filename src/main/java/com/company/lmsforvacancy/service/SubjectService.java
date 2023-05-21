@@ -1,6 +1,7 @@
 package com.company.lmsforvacancy.service;
 
 import com.company.lmsforvacancy.domain.Faculty;
+import com.company.lmsforvacancy.domain.Student;
 import com.company.lmsforvacancy.domain.Subject;
 import com.company.lmsforvacancy.dto.group.GroupUpdateDTO;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
@@ -16,6 +17,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -55,4 +58,5 @@ public class SubjectService {
         Pageable pageable = PageRequest.of(page, size);
         return subjectRepository.findAll(pageable);
     }
+
 }

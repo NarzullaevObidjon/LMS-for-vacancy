@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface SubjectRepository extends JpaRepository<Subject, Integer> {
@@ -22,4 +23,5 @@ public interface SubjectRepository extends JpaRepository<Subject, Integer> {
 
     @Query("from Subject u where not u.deleted")
     Page<Subject> findAll(Pageable pageable);
+
 }

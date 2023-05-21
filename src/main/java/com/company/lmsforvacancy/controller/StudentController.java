@@ -2,20 +2,28 @@ package com.company.lmsforvacancy.controller;
 
 import com.company.lmsforvacancy.domain.Faculty;
 import com.company.lmsforvacancy.domain.Student;
+import com.company.lmsforvacancy.domain.Subject;
 import com.company.lmsforvacancy.dto.student.StudentCreateDTO;
 import com.company.lmsforvacancy.dto.student.StudentUpdateDTO;
+import com.company.lmsforvacancy.service.GroupService;
 import com.company.lmsforvacancy.service.StudentService;
+import com.company.lmsforvacancy.service.SubjectService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/student")
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService studentService;
+    private final GroupService groupService;
+
+    //crud
 
     @GetMapping("/{id}")
     private ResponseEntity<Student> get(@PathVariable Integer id){
@@ -44,4 +52,13 @@ public class StudentController {
     ) {
         return ResponseEntity.ok(studentService.getAll(size, page));
     }
+
+    // additional
+
+    @GetMapping("/subjects/{id}")
+    public ResponseEntity<List<Subject>> getSubjects(@PathVariable Integer id){
+        return ResponseEntity.ok(groupService.getSubjects(id));
+    }
+
+
 }
