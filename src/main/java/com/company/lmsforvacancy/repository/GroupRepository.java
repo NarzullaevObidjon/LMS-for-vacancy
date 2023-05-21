@@ -39,12 +39,13 @@ public interface GroupRepository extends JpaRepository<Group, Integer> {
                     where g.faculty.id=?1""")
     List<Object[]> findIdsByFaculty(Integer id);
 
-//    @Query("""
-//            select
-//             *
-//            from
-//                groups g left join Journal g.id
-//            where g.id=?1
-//            """)
-//    List<Object[]> brbalo(Integer groupId)
+    @Query("""
+            select
+                (select s.name as student_name from Student s where s.id=m.student.id),
+                cast(sum(m.mark) as INTEGER ) as mark
+            from
+                Journal j left join Mark m on j.id = m.journal.id
+            where j.group.id=?1 and m.subject.id=?2 group by m.student.id order by mark desc
+            """)
+    List<Object[]> getSumOfMarksBySubjectIdInGroup(Integer groupId, Integer subjectId);
 }

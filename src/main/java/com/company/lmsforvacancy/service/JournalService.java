@@ -6,10 +6,8 @@ import com.company.lmsforvacancy.domain.Student;
 import com.company.lmsforvacancy.domain.Subject;
 import com.company.lmsforvacancy.dto.journal.JournalCreateDTO;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
-import com.company.lmsforvacancy.repository.GroupRepository;
 import com.company.lmsforvacancy.repository.JournalRepository;
 import com.company.lmsforvacancy.repository.StudentRepository;
-import com.company.lmsforvacancy.repository.SubjectRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
@@ -81,7 +79,7 @@ public class JournalService {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ItemNotFoundException("Student not found with id : " + id));
 
-        return journalRepository.getSubjectsByGroupId(student.getGroup().getId());
+        return journalRepository.getSubjectsById(student.getGroup().getId());
 
     }
 }

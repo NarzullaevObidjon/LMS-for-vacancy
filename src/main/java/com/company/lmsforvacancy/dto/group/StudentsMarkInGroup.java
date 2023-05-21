@@ -1,5 +1,6 @@
 package com.company.lmsforvacancy.dto.group;
 
+import com.company.lmsforvacancy.dto.subject.StudentsMarkInSubject;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +17,6 @@ public class StudentsMarkInGroup {
     @JsonProperty("group_id")
     private Integer groupId;
 
-    @JsonProperty("students_mark")
-    private List<StudentsMarkInGroup> studentsMark;
+    @JsonProperty("subjects")
+    private List<StudentsMarkInSubject> studentsMark;
 }

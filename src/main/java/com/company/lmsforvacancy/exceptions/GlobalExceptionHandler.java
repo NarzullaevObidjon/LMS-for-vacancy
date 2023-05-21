@@ -1,4 +1,4 @@
-package com.company.lmsforvacancy;
+package com.company.lmsforvacancy.exceptions;
 
 import com.company.lmsforvacancy.dto.error.AppErrorDTO;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;

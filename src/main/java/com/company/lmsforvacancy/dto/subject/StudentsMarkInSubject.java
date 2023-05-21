@@ -1,19 +1,23 @@
 package com.company.lmsforvacancy.dto.subject;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.List;
 import java.util.Map;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StudentsMarkInSubject {
-    @JsonProperty("subject_name")
-    private Integer subjectName;
     @JsonProperty("subject_id")
-    private String subjectId;
-    private Map<String, Integer> grades;
+    private Integer subjectId;
+    @JsonProperty("subject_name")
+    private String subjectName;
+    @JsonProperty("grades")
+    private List<StudentNameAndSumOfMarkBySubject> grades;
+
+
 }

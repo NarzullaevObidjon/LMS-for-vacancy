@@ -6,24 +6,25 @@ import com.company.lmsforvacancy.domain.Student;
 import com.company.lmsforvacancy.domain.Subject;
 import com.company.lmsforvacancy.dto.group.GroupCreateDTO;
 import com.company.lmsforvacancy.dto.group.GroupUpdateDTO;
+import com.company.lmsforvacancy.dto.group.StudentsMarkInGroup;
+import com.company.lmsforvacancy.dto.subject.StudentNameAndSumOfMarkBySubject;
+import com.company.lmsforvacancy.dto.subject.StudentsMarkInSubject;
 import com.company.lmsforvacancy.exceptions.ItemNotFoundException;
 import com.company.lmsforvacancy.repository.GroupRepository;
 import com.company.lmsforvacancy.repository.JournalRepository;
 import com.company.lmsforvacancy.repository.StudentRepository;
-import com.company.lmsforvacancy.repository.SubjectRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,7 +39,7 @@ public class GroupService {
     @Cacheable(key = "#id")
     public Group get(@NonNull Integer id) {
         return groupRepository.findById(id)
-                .orElseThrow(()->new ItemNotFoundException("Group not found with id : "+id));
+                .orElseThrow(() -> new ItemNotFoundException("Group not found with id : " + id));
     }
 
     public Group create(GroupCreateDTO dto) {
@@ -84,6 +85,26 @@ public class GroupService {
     public List<Subject> getSubjects(Integer id) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new ItemNotFoundException("Student not found with id : " + id));
-        return journalRepository.getSubjectsByGroupId(student.getGroup().getId());
+        return journalRepository.getSubjectsById(student.getGroup().getId());
+    }
+
+    public StudentsMarkInGroup studentsMarkInGroup(Integer groupId) {
+        List<Subject> subjects = journalRepository.getSubjectsIdsByGroupId(groupId);
+        List<StudentsMarkInSubject> inSubjects = new ArrayList<>();
+        for (Subject subject : subjects) {
+            List<Object[]> result = groupRepository.getSumOfMarksBySubjectIdInGroup(groupId, subject.getId());
+            List<StudentNameAndSumOfMarkBySubject> list = new ArrayList<>();
+
+            for (Object[] objects : result) {
+                list.add(new StudentNameAndSumOfMarkBySubject((String) objects[0], (Integer) objects[1]));
+            }
+
+            inSubjects.add(StudentsMarkInSubject.builder()
+                    .subjectName(subject.getName())
+                    .subjectId(subject.getId())
+                    .grades(list)
+                    .build());
+        }
+        return new StudentsMarkInGroup(groupId, inSubjects);
     }
 }

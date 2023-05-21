@@ -3,6 +3,7 @@ package com.company.lmsforvacancy.controller;
 import com.company.lmsforvacancy.domain.Group;
 import com.company.lmsforvacancy.dto.group.GroupCreateDTO;
 import com.company.lmsforvacancy.dto.group.GroupUpdateDTO;
+import com.company.lmsforvacancy.dto.group.StudentsMarkInGroup;
 import com.company.lmsforvacancy.service.GroupService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -53,6 +54,13 @@ public class GroupController {
 //    }
 
     //additional
+
+    @GetMapping("/get-marks-in-group")
+    private ResponseEntity<StudentsMarkInGroup> studentsMarkInGroup(
+            @RequestParam("group_id") Integer groupId
+    ) {
+        return ResponseEntity.ok(groupService.studentsMarkInGroup(groupId));
+    }
 
 
 }

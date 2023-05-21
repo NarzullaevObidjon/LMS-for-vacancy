@@ -25,5 +25,8 @@ public interface JournalRepository extends JpaRepository<Journal, Integer> {
     Page<Journal> findAll(Pageable pageable);
 
     @Query("select g.subjects from Journal g where g.id=?1")
-    List<Subject> getSubjectsByGroupId(Integer id);
+    List<Subject> getSubjectsById(Integer id);
+
+    @Query("select g.subjects from Journal g where g.group.id=?1")
+    List<Subject> getSubjectsIdsByGroupId(Integer groupId);
 }
